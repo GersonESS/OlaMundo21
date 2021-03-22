@@ -1,0 +1,8 @@
+#include <stdio.h>
+int array[] = { 1, 2 };
+typedef struct data { int* value; } data;
+static data * bad = &(data) { &(array[1]) };
+static data * good = &(data) { array + 1 };
+int main() {
+  printf("%p %p\n", good->value, bad->value);
+}
